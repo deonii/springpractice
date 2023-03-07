@@ -6,6 +6,8 @@ import com.example.testproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
@@ -25,7 +27,7 @@ public class ProductController {
 
     // http://localhost:8080/api/v1/product-api/product
     @PostMapping("/product")
-    public ProductDto createProduct(@RequestBody ProductDto productDto) {
+    public ProductDto createProduct(@Valid @RequestBody ProductDto productDto) {
         String productId = productDto.getProductId();
         String productName = productDto.getProductName();
         int productPrice = productDto.getProductPrice();
